@@ -1,6 +1,5 @@
-import 'package:dnafit_flutter/screen/HomeScreen.dart';
-import 'package:dnafit_flutter/widgets/CountDown.dart';
-import 'package:dnafit_flutter/widgets/Greeting.dart';
+import 'package:dnafit_flutter/widgets/count_down.dart';
+import 'package:dnafit_flutter/widgets/greeting.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -40,7 +39,7 @@ class LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Greeting(name: "Hello"),
+            const Greeting(name: "Hello"),
             Image.asset(
               'assets/images/logo.png',
               fit: BoxFit.contain,
