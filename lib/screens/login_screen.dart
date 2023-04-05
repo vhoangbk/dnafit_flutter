@@ -35,21 +35,62 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Greeting(name: "Hello"),
-            Image.asset(
-              'assets/images/logo.png',
+      body: Stack(
+        children: [
+          Container(
+            color: const Color(0xffbbddf1),
+            child: Image.asset(
+              'assets/images/login_bg.png',
               fit: BoxFit.contain,
-              width: 50,
-              height: 50,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
             ),
-            TextButton(onPressed: _onPresClickMe, child: Text('Login')),
-            const CountDown()
-          ],
-        ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: const Color(0xaa4B165E),
+            child: Column(children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 200, 0, 0),
+                child: Column(
+                  children: const [
+                    Text(
+                      'DNAfit',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 70,
+                        fontFamily: 'oslosans-bold'
+                      ),
+                    ),TextField(
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white, width: 1.0),
+                          ),
+                          hintText: 'Enter a search term',
+                        ),
+                      ),
+                  ], 
+                )
+              )
+            ]),
+          )
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: <Widget>[
+          //     const Greeting(name: "Hello"),
+          //     Image.asset(
+          //       'assets/images/logo.png',
+          //       fit: BoxFit.contain,
+          //       width: 50,
+          //       height: 50,
+          //     ),
+          //     TextButton(onPressed: _onPresClickMe, child: Text('Login')),
+          //     const CountDown()
+          //   ],
+          // ),
+
+        ],
       ),
     );
   }
