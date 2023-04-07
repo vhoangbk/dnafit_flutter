@@ -1,6 +1,5 @@
-import 'package:dnafit_flutter/widgets/count_down.dart';
-import 'package:dnafit_flutter/widgets/greeting.dart';
 import 'package:flutter/material.dart';
+import '../widgets/text_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,88 +9,78 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-  _onPresClickMe() {
-    Navigator.pushNamed(context, "/home");
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant LoginScreen oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: const Color(0xffbbddf1),
-            child: Image.asset(
-              'assets/images/login_bg.png',
-              fit: BoxFit.contain,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/login_bg.png"),
+              fit: BoxFit.cover,
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: const Color(0xaa4B165E),
-            child: Column(children: [
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              const Positioned(
+                top: 150,
+                child: Text(
+                  'DNAfit',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 70,
+                      fontFamily: 'oslosans-bold'),
+                ),
+              ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 200, 0, 0),
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                 child: Column(
-                  children: const [
-                    Text(
-                      'DNAfit',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 70,
-                        fontFamily: 'oslosans-bold'
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextInput(
+                      hintText: 'USERNAME OR EMAIL',
+                      onChanged: (value) {},
+                    ),
+                    const SizedBox(height: 20),
+                    TextInput(
+                      hintText: 'PASSWORD',
+                      onChanged: (value) {},
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            const MaterialStatePropertyAll(Color(0xFFF36E2E)),
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(200, 45)),
                       ),
-                    ),TextField(
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white, width: 1.0),
-                          ),
-                          hintText: 'Enter a search term',
+                      onPressed: () {},
+                      child: const Center(
+                        child: Text(
+                          'SIGN IN',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       ),
-                  ], 
-                )
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Forgot password',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontFamily: 'oslosans-regular'),
+                    ),
+                  ],
+                ),
               )
-            ]),
-          )
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: <Widget>[
-          //     const Greeting(name: "Hello"),
-          //     Image.asset(
-          //       'assets/images/logo.png',
-          //       fit: BoxFit.contain,
-          //       width: 50,
-          //       height: 50,
-          //     ),
-          //     TextButton(onPressed: _onPresClickMe, child: Text('Login')),
-          //     const CountDown()
-          //   ],
-          // ),
-
-        ],
-      ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
