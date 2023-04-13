@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Define the events
@@ -12,7 +11,6 @@ class LoginBloc extends Bloc {
 
   String get initialState => "";
 
-  @override
   Stream mapEventToState(LoginEvent event) async* {
     switch (event) {
       case LoginEvent.emailChanged:
