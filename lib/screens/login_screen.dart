@@ -1,3 +1,5 @@
+import 'package:dnafit_flutter/widgets/button_outline.dart';
+import 'package:dnafit_flutter/widgets/button_primary.dart';
 import 'package:flutter/material.dart';
 import '../widgets/text_input.dart';
 
@@ -41,6 +43,13 @@ class LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Row(
+                      children: [
+                        ButtonPrimary(
+                          text: 'Cancel',
+                        )
+                      ],
+                    ),
                     TextInput(
                       hintText: 'USERNAME OR EMAIL',
                       onChanged: (value) {},
@@ -66,6 +75,10 @@ class LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                    ButtonPrimary(
+                      text: 'SIGN UP',
+                    ),
+                    const SizedBox(height: 20),
                     const SizedBox(height: 20),
                     const Text(
                       'Forgot password',
