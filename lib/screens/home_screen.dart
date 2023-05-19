@@ -1,4 +1,6 @@
+import 'package:dnafit_flutter/widgets/cross_selling_info.dart';
 import 'package:flutter/material.dart';
+import '../widgets/cross_selling_info.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title, this.name = ''});
@@ -11,38 +13,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Container(
+        color: Color(0xFFE5E5E5),
+        padding: EdgeInsets.all(10),
+        child: Center(
+          child: CrossSellingInfo(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

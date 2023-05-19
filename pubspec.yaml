@@ -77,6 +77,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: AvenirNext
+      fonts:
+        - asset: assets/fonts/AvenirNext-Regular.otf
+        - asset: assets/fonts/AvenirNext-Bold.otf
+          weight: 700
     - family: oslosans-regular
       fonts:
         - asset: assets/fonts/oslosans-regular.ttf
