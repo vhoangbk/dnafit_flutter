@@ -1,3 +1,4 @@
+import 'package:dnafit_flutter/screens/test_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/home_screen.dart';
 import '../screens/login_screen.dart';
@@ -8,6 +9,10 @@ initRouter(RouteSettings setting) {
     case "/home":
       screen =
           MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
+      break;
+    case "/test":
+      screen =
+          MaterialPageRoute(builder: (_) => const TestScreen(title: "Test"));
       break;
     case "/login":
       screen = MaterialPageRoute(builder: (_) => const LoginScreen());

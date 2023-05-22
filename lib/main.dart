@@ -5,5 +5,13 @@ import 'navigator/app.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+;
+  });
+  WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
+
+  });
+
   runApp(App());
 }
