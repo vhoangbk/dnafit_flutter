@@ -1,6 +1,6 @@
-import 'package:dnafit_flutter/widgets/button_outline.dart';
-import 'package:dnafit_flutter/widgets/button_primary.dart';
+import 'package:dnafit_flutter/network/response.dart';
 import 'package:flutter/material.dart';
+import '../network/login_service.dart';
 import '../widgets/text_input.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,6 +11,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+
+  String username = '';
+  String password = '';
+
+  void onPressLogin() async {
+    LoginService loginService = LoginService(context);
+    Response res = await loginService.login(username, password);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -43,21 +52,18 @@ class LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Row(
-                      children: [
-                        ButtonPrimary(
-                          text: 'Cancel',
-                        )
-                      ],
-                    ),
                     TextInput(
                       hintText: 'USERNAME OR EMAIL',
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        username = value;
+                      },
                     ),
                     const SizedBox(height: 20),
                     TextInput(
                       hintText: 'PASSWORD',
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        password = value;
+                      },
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
@@ -67,7 +73,7 @@ class LoginScreenState extends State<LoginScreen> {
                         minimumSize:
                             MaterialStateProperty.all(const Size(200, 45)),
                       ),
-                      onPressed: () {},
+                      onPressed: onPressLogin,
                       child: const Center(
                         child: Text(
                           'SIGN IN',
@@ -75,10 +81,6 @@ class LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    ButtonPrimary(
-                      text: 'SIGN UP',
-                    ),
-                    const SizedBox(height: 20),
                     const SizedBox(height: 20),
                     const Text(
                       'Forgot password',

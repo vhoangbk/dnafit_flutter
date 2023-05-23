@@ -30,33 +30,25 @@ class ButtonPrimary extends StatelessWidget {
         ? textStyle!.copyWith(color: textStyle!.color ?? textColorDefault)
         : textStyleDefault;
 
-    return (FilledButton(
+    return (TextButton(
       style: ButtonStyle(
-        backgroundColor:
-            MaterialStatePropertyAll(backgroundColor ?? backgroundColorDefault),
+
       ),
       onPressed: onPress,
-      child: Text(
-        text ?? '',
-        style: textStyleCopy,
+      child: Container(
+        height: height ?? heightDefault,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? backgroundColorDefault,
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
+        child: Center(
+          child: Text(
+            text ?? '',
+            style: textStyleCopy,
+          ),
+        ),
       ),
     ));
-    // return (TextButton(
-    //   style:
-    //       const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
-    //   onPressed: onPress,
-    //   child: Container(
-    //       height: height ?? heightDefault,
-    //       width: double.infinity,
-    //       decoration: BoxDecoration(
-    //           color: backgroundColor ?? backgroundColorDefault,
-    //           borderRadius: const BorderRadius.all(Radius.circular(5))),
-    //       child: Center(
-    //         child: Text(
-    //           text ?? '',
-    //           style: textStyleCopy,
-    //         ),
-    //       )),
-    // ));
   }
 }

@@ -1,5 +1,4 @@
-import 'package:dnafit_flutter/network/api_client.dart';
-import 'package:dnafit_flutter/network/response.dart';
+import 'package:dnafit_flutter/widgets/infor_dialog.dart';
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatefulWidget{
@@ -24,6 +23,16 @@ class TestScreenState extends State<TestScreen> with WidgetsBindingObserver {
     super.didChangeAppLifecycleState(state);
   }
 
+  void onError(String msg) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return InforDialog(message: msg);
+      },
+    );
+  }
+
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -43,9 +52,13 @@ class TestScreenState extends State<TestScreen> with WidgetsBindingObserver {
         child: Center(
           child: TextButton(
               onPressed: () async {
-                ApiClient client = ApiClient();
-                Response res = await client.post('/retail-micms/listCrossSelling');
-                print(res.toJson());
+                // ApiClient client = ApiClient();
+                // Response res = await client.post('/retail-micms/listCrossSelling');
+                // String res = client.createBody({
+                //   'name': 'hoangnv',
+                //   'age': 18,
+                // });
+                // print(res);
               },
               child: Text('Click me')
           ),

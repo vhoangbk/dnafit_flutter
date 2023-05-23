@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
 import 'router.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +13,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/test',
+      initialRoute: '/login',
       onGenerateRoute: (setting) {
         return initRouter(setting);
       },
