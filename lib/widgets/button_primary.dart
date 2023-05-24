@@ -32,14 +32,14 @@ class ButtonPrimary extends StatelessWidget {
 
     return (TextButton(
       style: ButtonStyle(
-
+        padding: MaterialStateProperty.all(EdgeInsets.all(0)),
+        backgroundColor: MaterialStateProperty.all(backgroundColor ?? backgroundColorDefault),
       ),
       onPressed: onPress,
       child: Container(
         height: height ?? heightDefault,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: backgroundColor ?? backgroundColorDefault,
           borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Center(

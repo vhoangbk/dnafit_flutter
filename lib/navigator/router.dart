@@ -6,19 +6,37 @@ import '../screens/login_screen.dart';
 initRouter(RouteSettings setting) {
   final MaterialPageRoute screen;
   switch (setting.name) {
-    case "/home":
+    case "home":
       screen =
           MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
       break;
-    case "/test":
+    case "test":
       screen =
           MaterialPageRoute(builder: (_) => const TestScreen(title: "Test"));
       break;
-    case "/login":
+    case "login":
       screen = MaterialPageRoute(builder: (_) => const LoginScreen());
       break;
     default:
       screen = MaterialPageRoute(builder: (_) => const LoginScreen());
+      break;
+  }
+  return screen;
+}
+
+initRouter2(RouteSettings setting) {
+  final MaterialPageRoute screen;
+  switch (setting.name) {
+    case "home":
+      screen =
+          MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
+      break;
+    case "test":
+      screen =
+          MaterialPageRoute(builder: (_) => const TestScreen(title: "Test"));
+      break;
+    default:
+      screen = MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
       break;
   }
   return screen;

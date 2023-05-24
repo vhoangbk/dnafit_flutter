@@ -51,9 +51,9 @@ class ApiClient {
     );
   }
 
-  Future<Response> post(String url, Map<String, dynamic> params, bool showLoading, bool showError) async {
+  Future<Map<String, dynamic>> post(String url, Map<String, dynamic> params, bool showLoading, bool showError) async {
     String jsonParam = createBody(params);
-    print('[REQUeST] $url $jsonParam');
+    debugPrint('[REQUeST] $url $jsonParam');
     if (showLoading){
       onLoading();
     }
@@ -64,16 +64,22 @@ class ApiClient {
       body: jsonParam,
     );
     if (showLoading) {
-      Navigator.pop(context);
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
     }
     if (res.statusCode == 200) {
-      dynamic body = res.body;
-      print('[RESPONSE] $body');
-      Response response = Response.fromJson(jsonDecode(body));
-      if (response.result.responseCode != '00' && showError) {
-        onError(response.result.message);
+      String body = res.body;
+      debugPrint('[RESPONSE] $body');
+      // log('[RESPONSE] $body');
+      // Response response = Response.fromJson(jsonDecode(body));
+      Map<String, dynamic> json = jsonDecode(body);
+      String responseCode = json['result']['responseCode'];
+      String message = json['result']['message'];
+      if (responseCode != '00' && showError) {
+        onError(message);
       }
-      return response;
+      return json;
     } else {
       onError('error server or internet ${res.statusCode}');
       throw Exception('error server or internet ${res.statusCode}');
