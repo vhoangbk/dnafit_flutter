@@ -28,7 +28,7 @@ class App extends StatelessWidget {
                   theme: ThemeData(
                     primarySwatch: Colors.blue,
                   ),
-                  initialRoute: isLogin ? 'home' : 'login',
+                  initialRoute: isLogin ? '/test' : '/test',
                   onGenerateRoute: (setting) {
                     return initRouter(setting);
                   },

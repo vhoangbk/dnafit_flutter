@@ -26,7 +26,6 @@ class HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.all(10),
             child: Column(
               children: [
-                CrossSellingInfo(),
                 Text(session.sessionId)
               ],
             ),

@@ -38,7 +38,7 @@ class LoginScreenState extends State<LoginScreen> {
         String sessionId = res['sessionId'];
         session.sessionId = sessionId;
         StorageUtils().setStringValue('sessionId', sessionId);
-        Navigator.of(context).popAndPushNamed('home');
+        Navigator.of(context).popAndPushNamed('/home');
       }
     }catch (e){
       debugPrint(e.toString());
