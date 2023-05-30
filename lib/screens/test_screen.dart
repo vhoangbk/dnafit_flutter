@@ -1,6 +1,7 @@
 import 'package:dnafit_flutter/models/cross_selling.dart';
 import 'package:dnafit_flutter/widgets/cross_selling_error.dart';
 import 'package:dnafit_flutter/widgets/cross_selling_info.dart';
+import 'package:dnafit_flutter/widgets/cross_selling_success.dart';
 import 'package:dnafit_flutter/widgets/infor_dialog.dart';
 import 'package:flutter/material.dart';
 
@@ -61,15 +62,7 @@ class TestScreenState extends State<TestScreen> with WidgetsBindingObserver {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CrossSellingError(
-                data: CrossSelling(
-                  tiedProductCode: CrossSelling.CYBER_RISK_PURCHASE,
-                  amount: '100000',
-                  startDate: '25/05/2023',
-                  endDate: '25/11/2023',
-                  interestRate: '4'
-                ),
-              )
+
             ],
           ),
         ),

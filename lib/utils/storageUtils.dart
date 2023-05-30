@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'package:dnafit_flutter/models/session.dart';
 import 'package:localstorage/localstorage.dart';
 
 class StorageUtils{
@@ -25,8 +26,10 @@ class StorageUtils{
     return value ?? defaultValue;
   }
 
-  Future<bool> hasLogin() async {
+  Future<Session> getSession() async {
     String sessionId = await getStringValue('sessionId');
-    return sessionId.isNotEmpty;
+    Session session = Session();
+    session.sessionId = sessionId;
+    return session;
   }
 }

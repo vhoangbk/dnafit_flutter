@@ -11,28 +11,35 @@ class App extends StatelessWidget {
 
   App({super.key, required this.isLogin}) {}
 
+
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: StorageUtils().hasLogin(),
-        builder: (BuildContext context, AsyncSnapshot<bool?> hasLogin){
-          if (hasLogin.hasData) {
+      future: StorageUtils().getSession(),
+        builder: (BuildContext context, AsyncSnapshot<Session?> session){
+          if (session.hasData) {
             FlutterNativeSplash.remove();
           }
           return MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => Session())
             ],
-            child:
-                MaterialApp(
-                  theme: ThemeData(
-                    primarySwatch: Colors.blue,
-                  ),
-                  initialRoute: isLogin ? '/test' : '/test',
-                  onGenerateRoute: (setting) {
-                    return initRouter(setting);
-                  },
-                ),
+            child: MaterialApp(
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              onGenerateRoute: (setting) {
+                // if (isLogin) {
+                //   return mainStack(setting);
+                // } else {
+                //   return loginStack(setting);
+                // }
+
+                return tutorialStack(setting);
+
+              },
+            ),
           );
         }
     );

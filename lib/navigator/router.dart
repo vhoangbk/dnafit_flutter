@@ -1,9 +1,31 @@
 import 'package:dnafit_flutter/screens/test_screen.dart';
+import 'package:dnafit_flutter/screens/tutorial_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/home_screen.dart';
 import '../screens/login_screen.dart';
 
-initRouter(RouteSettings setting) {
+tutorialStack(RouteSettings setting) {
+  final MaterialPageRoute screen;
+  switch (setting.name) {
+    case "/":
+      screen =
+          MaterialPageRoute(builder: (_) => TutorialScreen());
+      break;
+    case "/tutorial":
+      screen =
+          MaterialPageRoute(builder: (_) => mainStack(setting));
+      break;
+    case "/login":
+      screen = MaterialPageRoute(builder: (_) => const LoginScreen());
+      break;
+    default:
+      screen = MaterialPageRoute(builder: (_) => TutorialScreen());
+      break;
+  }
+  return screen;
+}
+
+loginStack(RouteSettings setting) {
   final MaterialPageRoute screen;
   switch (setting.name) {
     case "/":
@@ -12,11 +34,7 @@ initRouter(RouteSettings setting) {
       break;
     case "/home":
       screen =
-          MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
-      break;
-    case "/test":
-      screen =
-          MaterialPageRoute(builder: (_) => const TestScreen(title: "Test"));
+          MaterialPageRoute(builder: (_) => mainStack(setting));
       break;
     case "/login":
       screen = MaterialPageRoute(builder: (_) => const LoginScreen());
@@ -28,21 +46,26 @@ initRouter(RouteSettings setting) {
   return screen;
 }
 
-initRouter2(RouteSettings setting) {
+mainStack(RouteSettings setting) {
   final MaterialPageRoute screen;
   switch (setting.name) {
-    case "home":
+    case "/":
       screen =
           MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
       break;
-    case "test":
+    case "/home":
       screen =
-          MaterialPageRoute(builder: (_) => const TestScreen(title: "Test"));
+          MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
       break;
     default:
       screen = MaterialPageRoute(builder: (_) => const HomeScreen(title: "Home"));
       break;
   }
+  return screen;
+}
+
+testStack(RouteSettings setting) {
+  final MaterialPageRoute screen = MaterialPageRoute(builder: (_) => const TestScreen(title: "Test"));
   return screen;
 }
 

@@ -10,10 +10,11 @@ class CrossSelling{
   String tiedProductCode;
   String? accNo;
   String? interestRate;
+  String? refID;
   String startDate;
   String endDate;
 
-  CrossSelling({required this.tiedProductCode, required this.amount, required this.startDate, required this.endDate, this.sourceAcc, this.accNo, this.interestRate});
+  CrossSelling({required this.tiedProductCode, required this.amount, required this.startDate, required this.endDate, this.sourceAcc, this.accNo, this.interestRate, this.refID});
 
   String valueDate(){
     return dateFormat(startDate);;
@@ -23,6 +24,13 @@ class CrossSelling{
     DateFormat format = DateFormat('dd/MM/yyyy');
     DateTime dateTime = format.parse(date);
     return DateFormat('yyyyMMdd').format(dateTime);
+  }
+
+  String autoRenewDate(){
+    DateFormat format = DateFormat('dd/MM/yyyy');
+    DateTime dateTime = format.parse(endDate);
+    DateTime autoDate = dateTime.add(Duration(days: 1));
+    return DateFormat('dd/MM/yyyy').format(autoDate);
   }
 
   String matDate(){

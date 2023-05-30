@@ -1,4 +1,5 @@
 import 'package:dnafit_flutter/models/session.dart';
+import 'package:dnafit_flutter/utils/storageUtils.dart';
 import 'package:dnafit_flutter/widgets/cross_selling_info.dart';
 import 'package:flutter/material.dart';
 import '../widgets/cross_selling_info.dart';
@@ -18,16 +19,24 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+            widget.title
+        ),
+      ),
       body: Consumer<Session>(
         builder: (context, session, child){
           return Container(
-            color: Color(0xFFE5E5E5),
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Text(session.sessionId)
-              ],
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(session.sessionId)
+                ],
+              ),
             ),
           );
         },
